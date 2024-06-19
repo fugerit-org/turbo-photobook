@@ -1,0 +1,11 @@
+[colophon]
+= Introduction
+
+**Matteo Franci**, This is a comparison of a simple online demo photobook implemented with three popular java cloud ready framework.
+
+[.text-left]
+*Copyright*
+
+**@2024** Matteo Franci - **CC BY 4.0** - ATTRIBUTION 4.0 INTERNATIONAL - https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+
+All trademarks, logos and brand names are the property of their respective owners. All company, product and service names used in this website are for identification purposes only. Use of these names,trademarks and brands does not imply endorsement.
