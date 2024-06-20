@@ -1,0 +1,36 @@
+[colophon]
+= Architecture
+
+[mermaid, title="Turbo Photobook Mind Map"]
+....
+mindmap
+  root((<br/>Turbo<br/>Photobook))
+    ::icon(fa fa-dragon)
+    Documentation
+    ::icon(fa fa-file)
+      Asciidoc
+      ::icon(fa fa-book)
+        Mermaid
+        ::icon(fa fa-chart-line)
+    Implementation
+      ::icon(fa fa-code)
+      MongoDB 8
+      ::icon(fa fa-leaf)
+      Node JS 20
+      ::icon(fa fa-cube)
+        Vite
+        React
+      GraalVM Java 21<br>&lpar;pick one&rpar;
+      ::icon(fa fa-mug-hot)
+         Micronaut
+         ::icon(fa-brands fa-github)
+         Quarkus
+         Spring Boot
+    Deployment
+      ::icon(fa fa-paper-plane)
+      Java Hotspot jar package JIT
+      GraalVM native executable AOT
+      Containerized JIT application
+      Containerized AOT application
+....
+
