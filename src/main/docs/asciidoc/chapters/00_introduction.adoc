@@ -1,7 +1,19 @@
 [colophon]
 = Introduction
 
-**Matteo Franci**, This is a comparison of a simple online demo photobook implemented with three popular java cloud ready framework.
+This is a comparison of a simple online demo photobook implemented with three popular java cloud ready framework :
+
+* link:https://github.com/fugerit-org/micronaut-photobook/[Micronaut]
+* link:https://github.com/fugerit-org/quarkus-photobook/[Quarkus]
+* link:https://github.com/fugerit-org/springboot-photobook/[Spring Boot]
+
+Status : Work in progess
+
+TODO:
+
+* benchmark chapter
+* performance comparison chapter
+* resources chapter
 
 [.text-left]
 *Copyright*

@@ -34,3 +34,26 @@ mindmap
       Containerized AOT application
 ....
 
+
+[mermaid, title="Software Architecture"]
+....
+block-beta
+columns 2
+block:per:2
+    columns 2
+    persistance["Persistance"]:1
+    mongo[("MongoDB")]
+    style per fill:#9d9,stroke:#333,stroke-width:4px
+end
+blockArrowLink<["Uses"]>(up, down):2
+block:app
+        columns 2
+        application["application"]:2
+        rest["API Rest"]
+        backend(["Java Framework<br/>(Micronaut, Quarkus, Spring Boot)"]):1
+        ui["User interface"]
+        react(["React Single Page Application"]):1
+        style backend fill:#fdd,stroke:#333,stroke-width:4px
+        style app fill:#99d,stroke:#333,stroke-width:4px
+    end
+....

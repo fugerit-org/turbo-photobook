@@ -1,4 +1,4 @@
-= Java Frameworks Comparison
+= Java Framework Comparison
 // format attributes inclusions
 include::attributes/_attributes-pdf.adoc[]
 include::attributes/_attributes-common.adoc[]

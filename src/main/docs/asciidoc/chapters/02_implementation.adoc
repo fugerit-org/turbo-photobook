@@ -1,0 +1,43 @@
+[colophon]
+= Implementation
+
+Each implementation has its own repository :
+
+[cols="1,2,3"]
+|===
+| Framework | GitHub repository | Description
+
+| link:https://micronaut.io/[Micronaut]
+| link:https://github.com/fugerit-org/micronaut-photobook/[fugerit-org/micronaut-photobook]
+| A modern, jvm-based, full-stack framework for building modular, easily testable microservice and serverless applications.
+
+| link:https://quarkus.io/[Quarkus]
+| link:https://github.com/fugerit-org/quarkus-photobook/[fugerit-org/quarkus-photobook]
+| A Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM, crafted from the best of breed Java libraries and standards.
+
+| link:https://spring.io/projects/spring-boot/[Spring Boot]
+| link:https://github.com/fugerit-org/springboot-photobook/[fugerit-org/springboot-photobook]
+| Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+
+|===
+
+Each project structure is based on link:https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven Standard Directory Layout] :
+
+[cols="1,1"]
+|===
+| path | description
+
+| src/main/java      | Application (Micronaut / Quarkus / Spring Boot) sources
+| src/main/resources | Application (Micronaut / Quarkus / Spring Boot) resources
+| src/main/react     | React front end sources
+| src/test/java      | Test sources
+| src/test/resources | Test resources
+| src/main/docker    | Dockerfile (JIT, native), docker-compose
+| src/main/script    | Project scripts (simple benchmark and utilities)
+| src/main/docs      | Project specific documentation assets
+| README.md          | Readme
+| CHANGELOG.md       | Changelog (keep a changelog style)
+| LICENSE            | License
+| CONTRIBUTING.md    | Contribution lineguies
+
+|===
