@@ -4,6 +4,10 @@
 [![license](https://img.shields.io/badge/License-MIT%20License-blue.svg)](https://opensource.org/license/mit)
 [![code of conduct](https://img.shields.io/badge/conduct-Contributor%20Covenant-purple.svg)](https://github.com/fugerit-org/fj-universe/blob/main/CODE_OF_CONDUCT.md)
 
+[![Build and deploy AsciiDoc to GH Pages](https://github.com/fugerit-org/turbo-photobook/actions/workflows/asciidoc_2_gh_pages.yml/badge.svg)](https://github.com/fugerit-org/turbo-photobook/actions/workflows/asciidoc_2_gh_pages.yml)
+[![Build AsciiDoc to PDF](https://github.com/fugerit-org/turbo-photobook/actions/workflows/asciidoc_2_pdf.yml/badge.svg)](https://github.com/fugerit-org/turbo-photobook/actions/workflows/asciidoc_2_pdf.yml)
+[![Maven Central](https://img.shields.io/badge/GitHub%20Pages-Turbo%20Photobook-%23111199)](https://turbo-photobook.fugerit.org)
+
 This is a comparison of a simple online demo photobook implemented with three popular java cloud ready framework : 
 
 1. [Spring Boot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run"
