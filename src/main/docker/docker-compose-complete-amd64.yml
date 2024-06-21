@@ -1,0 +1,155 @@
+# sample docker compose file for https://github.com/fugerit-org/springboot-photobook
+# docker-compose -f src/main/docker/docker-compose.yml up -d
+version: '3.8'
+
+# Define the networks
+networks:
+  turbo_photobook_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.24.0.0/16
+
+# Define the services
+# 1. Mongo DB
+# 2. Spring Boot
+services:
+  mongodb:
+    image: mongo:8.0.0-rc8
+    container_name: mongo8-turbo-photobook
+    restart: always
+    networks:
+      - turbo_photobook_network
+    ports:
+      - "27017:27017"
+    volumes:
+      # sample photobook initialization
+      - ${PWD}/src/test/resources/mongo-db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    deploy:
+      resources:
+        limits:
+          cpus: 1.0
+          memory: 1024M
+        reservations:
+          cpus: 0.5
+          memory: 512M
+  micronaut-boot-jit:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/micronaut-photobook/general
+    image: fugeritorg/micronaut-photobook:latest
+    container_name: micronaut-photobook-jit
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - mongodb.uri=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7010:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
+  micronaut-boot-aot:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/micronaut-photobook/general
+    image: fugeritorg/micronaut-photobook:latest-amd64native
+    container_name: micronaut-photobook-aot
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - mongodb.uri=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7020:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
+  quarkus-boot-jit:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/quarkus-photobook/general
+    image: fugeritorg/quarkus-photobook:latest
+    container_name: quarkus-photobook-jit
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7030:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
+  quarkus-boot-aot:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/quarkus-photobook/general
+    image: fugeritorg/quarkus-photobook:latest-amd64native
+    container_name: quarkus-photobook-aot
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7040:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
+  spring-boot-jit:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/springboot-photobook/general
+    image: fugeritorg/springboot-photobook:latest
+    container_name: springboot-photobook-jit
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7050:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
+  spring-boot-aot:
+    # possible to chose more tags from :
+    # https://hub.docker.com/repository/docker/fugeritorg/springboot-photobook/general
+    image: fugeritorg/springboot-photobook:latest-amd64native
+    container_name: springboot-photobook-aot
+    restart: always
+    networks:
+      - turbo_photobook_network
+    environment:
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+    ports:
+      - "7060:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 256M
+        reservations:
+          cpus: 0.1
+          memory: 128M
