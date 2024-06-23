@@ -1,5 +1,7 @@
-[colophon]
-= Architecture
+<<<
+== Architecture
+
+This section describes the project architecture.
 
 [mermaid, title="Turbo Photobook Mind Map"]
 ....

@@ -1,0 +1,58 @@
+<<<
+=== MongoDB collection definitions
+
+Persistence layer is implemented through the no sql database MongoDB.
+
+[mermaid, title="Collection schema"]
+....
+erDiagram
+    PHOTOBOOK_META ||--o{ PHOTOBOOK_IMAGES : contains
+....
+
+Here are two sample documents :
+
+[source,json, title="Collection : photobook_meta - sample document"]
+....
+{
+    "photobookId":"springio23",
+    "creationTime:":{"$timestamp":{"t":0,"i":0}},
+    "modificationTime:":{"$timestamp":{"t":0,"i":0}},
+    "author":"Fugerit",
+    "labels": {
+        "def": {
+            "photobookTitle":"Spring I/O - Barcellona",
+            "photobookDescription":"Breve album sull'esperienza allo Spring I/O 2023 di Barcellona"
+        },
+        "en": {
+            "photobookTitle":"Spring I/O - Barcelona",
+            "photobookDescription":"Brief summary of my experience at the Barcelona Spring I/O 2023"
+        }
+    }
+}
+....
+
+[source,json, title="Collection : photobook_images - sample document"]
+....
+{
+        "imageId":1000,
+        "photobookId":"springio23",
+        "creationTime:":{"$timestamp":{"t":0,"i":0}},
+        "modificationTime:":{"$timestamp":{"t":0,"i":0}},
+        "author":"Fugerit",
+        "base64":"...",
+        "type":"jpg",
+        "labels": {
+            "def": {
+                "caption":"Ingresso alla \"Fira de Barcelona\" per la registrazione."
+
+            },
+            "en": {
+                "caption":"Entrance to the \"Fira de Barcelona\" for registration."
+            }
+        }
+    }
+....
+
+A example init script can be found on the GitHub project :
+https://github.com/fugerit-org/turbo-photobook/blob/main/src/test/resources/mongo-db/mongo-init.js
+

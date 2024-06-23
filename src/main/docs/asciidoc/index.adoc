@@ -5,5 +5,9 @@ include::attributes/_attributes-common.adoc[]
 
 // Chapters inclusons
 include::chapters/00_introduction.adoc[]
+
 include::chapters/01_architecture.adoc[]
+
 include::chapters/02_implementation.adoc[]
+include::chapters/02_1_persistence.adoc[]
+include::chapters/02_2_aggregation.adoc[]

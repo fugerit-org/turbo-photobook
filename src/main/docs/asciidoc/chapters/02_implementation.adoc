@@ -1,5 +1,5 @@
-[colophon]
-= Implementation
+<<<
+== Implementation
 
 Each implementation has its own repository :
 

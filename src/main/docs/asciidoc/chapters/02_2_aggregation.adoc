@@ -1,0 +1,167 @@
+<<<
+=== MongoDB aggregation pipelines
+
+Database queries are implemented though link:https://www.mongodb.com/docs/manual/core/aggregation-pipeline/[MongoDB Aggregation pipelines].
+
+Aggregations pipelines allow to process a document in multiple steps (stages).
+
+Here are the aggregations currently used :
+
+1. **List photobooks**
+
+Applied to collection 'photobook_meta', list the photobooks contained in the database with page handling.
+
+It is composed of some stages :
+
+* **set** labels based on language
+* **sort** the collection result
+* **project** the properties for the result (_id is excluded)
+* **facet** with meta informations for page handling
+
+[source,json, title="Aggrefation pipeline - list photobooks"]
+....
+ [
+  {
+    $set:
+      {
+        info: {
+          $ifNull: ["$labels.en", "$labels.def"],
+        },
+      },
+  },
+  {
+    $sort:
+      {
+        photobookId: 1,
+      },
+  },
+  {
+    $project:
+      {
+        _id: 0,
+        photobookId: 1,
+        author: 1,
+        info: 1,
+      },
+  },
+  {
+    $facet:
+      {
+        metadata: [
+          {
+            $count: "total",
+          },
+          {
+            $addFields: {
+              page: NumberInt(1),
+            },
+          },
+        ],
+        data: [
+          {
+            $skip: 0,
+          },
+          {
+            $limit: 10,
+          },
+        ],
+      },
+  },
+]
+....
+
+2. **List images in a photobook**
+
+Applied to collection 'photobook_images', list images contained in photobook with page handling.
+
+It is composed of some stages :
+
+* **match** filter the selected photobook
+* **sort** the collection result
+* **set** labels based on language
+* **project** the properties for the result (_id is excluded, base64 is not included too)
+* **facet** with meta informations for page handling
+
+[source,json, title="Aggregation pipeline - list images for a photobook"]
+....
+[
+  {
+    $match: {
+      photobookId: "springio23",
+    },
+  },
+  {
+    $sort:
+      {
+        imageId: 1,
+      },
+  },
+  {
+    $set: {
+      info: {
+        $ifNull: ["$labels.en", "$labels.def"],
+      },
+    },
+  },
+  {
+    $project: {
+	  _id:0,
+	  imageId:1,
+	  author:1,
+	  type:1,
+	  info:1
+    },
+  },
+  {
+    $facet: {
+      metadata: [
+        {
+          $count: "total",
+        },
+        {
+          $addFields: {
+            page: NumberInt(1),
+          },
+        },
+      ],
+      data: [
+        {
+          $skip: 0,
+        },
+        {
+          $limit: 30,
+        },
+      ],
+    },
+  },
+]
+....
+
+3. **Image base64 content**
+
+Applied to collection 'photobook_images', retrieves only the base64 content for rendering.
+
+It is composed of some stages :
+
+* **match** filter the selected image
+* **project** the properties for the result (only base64 content)
+
+[source,json, title="Aggregation pipeline - retrieves image content"]
+....
+[
+ {
+   $match:
+     {
+       imageId: 1000,
+       photobookId: "springio23",
+     },
+ },
+ {
+   $project:
+     {
+       _id: 0,
+       base64: 1,
+     },
+ },
+]
+....
