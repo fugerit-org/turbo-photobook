@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #
-# Simple benchmark script using hey and psrecord
+# Simple benchmark script using h2load
 #
 # Author:	Matteo Franci <mttfranci@gmail.com>
-#
-# NOTE: this script is based on <https://github.com/alina-yur/native-spring-boot/blob/main/bench-jit-c2.sh>
 set -e
 
 function print() {
