@@ -28,10 +28,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.0'
-          memory: 1024M
+          cpus: '2.0'
+          memory: 2048M
         reservations:
-          cpus: '0.5'
+          cpus: '1.0'
           memory: 512M
   micronaut-jit:
     # possible to chose more tags from :
@@ -64,17 +64,17 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
-      - JAVA_OPTS_APPEND= -Xmx108m
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7020:8080"
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 128M
+          memory: 256M
         reservations:
           cpus: '0.2'
-          memory: 64M
+          memory: 128M
   quarkus-jit:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/quarkus-photobook/general
@@ -106,17 +106,17 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
-      - JAVA_OPTS_APPEND= -Xmx108m
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7040:8080"
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 128M
+          memory: 256M
         reservations:
           cpus: '0.2'
-          memory: 64M
+          memory: 128M
   spring-boot-jit:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/springboot-photobook/general
@@ -148,14 +148,14 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
-      - JAVA_OPTS_APPEND= -Xmx108m
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7060:8080"
     deploy:
       resources:
         limits:
           cpus: '0.5'
-          memory: 128M
+          memory: 256M
         reservations:
           cpus: '0.2'
-          memory: 64M
+          memory: 128M

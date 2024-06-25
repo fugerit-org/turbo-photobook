@@ -25,6 +25,6 @@ else
     export URL_PARAM="${URL_PARAM} ${REST_BASE}/${url}"
   done
   echo "URL_PARAM : ${URL_PARAM}"
-  h2load -n100000 -c30 --warm-up-time=2 ${URL_PARAM}
+  h2load -n100000 -c50 --warm-up-time=2 ${URL_PARAM}
   print "Benchmark over for '${BASE_URL}' 🏎️"
 fi
