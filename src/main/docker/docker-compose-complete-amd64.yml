@@ -28,12 +28,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 1.0
+          cpus: '1.0'
           memory: 1024M
         reservations:
-          cpus: 0.5
+          cpus: '0.5'
           memory: 512M
-  micronaut-boot-jit:
+  micronaut-jit:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/micronaut-photobook/general
     image: fugeritorg/micronaut-photobook:latest
@@ -42,18 +42,19 @@ services:
     networks:
       - turbo_photobook_network
     environment:
-      - mongodb.uri=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7010:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
+          cpus: '0.5'
           memory: 256M
         reservations:
-          cpus: 0.1
+          cpus: '0.2'
           memory: 128M
-  micronaut-boot-aot:
+  micronaut-aot:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/micronaut-photobook/general
     image: fugeritorg/micronaut-photobook:latest-amd64native
@@ -62,18 +63,19 @@ services:
     networks:
       - turbo_photobook_network
     environment:
-      - mongodb.uri=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx108m
     ports:
       - "7020:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
-          memory: 256M
-        reservations:
-          cpus: 0.1
+          cpus: '0.5'
           memory: 128M
-  quarkus-boot-jit:
+        reservations:
+          cpus: '0.2'
+          memory: 64M
+  quarkus-jit:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/quarkus-photobook/general
     image: fugeritorg/quarkus-photobook:latest
@@ -83,17 +85,18 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7030:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
+          cpus: '0.5'
           memory: 256M
         reservations:
-          cpus: 0.1
+          cpus: '0.2'
           memory: 128M
-  quarkus-boot-aot:
+  quarkus-aot:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/quarkus-photobook/general
     image: fugeritorg/quarkus-photobook:latest-amd64native
@@ -103,16 +106,17 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx108m
     ports:
       - "7040:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
-          memory: 256M
-        reservations:
-          cpus: 0.1
+          cpus: '0.5'
           memory: 128M
+        reservations:
+          cpus: '0.2'
+          memory: 64M
   spring-boot-jit:
     # possible to chose more tags from :
     # https://hub.docker.com/repository/docker/fugeritorg/springboot-photobook/general
@@ -123,15 +127,16 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx236m
     ports:
       - "7050:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
+          cpus: '0.5'
           memory: 256M
         reservations:
-          cpus: 0.1
+          cpus: '0.2'
           memory: 128M
   spring-boot-aot:
     # possible to chose more tags from :
@@ -143,13 +148,14 @@ services:
       - turbo_photobook_network
     environment:
       - MONGODB_URL=mongodb://mongo8-turbo-photobook:27017/photobook_demo
+      - JAVA_OPTS_APPEND= -Xmx108m
     ports:
       - "7060:8080"
     deploy:
       resources:
         limits:
-          cpus: 0.2
-          memory: 256M
-        reservations:
-          cpus: 0.1
+          cpus: '0.5'
           memory: 128M
+        reservations:
+          cpus: '0.2'
+          memory: 64M
