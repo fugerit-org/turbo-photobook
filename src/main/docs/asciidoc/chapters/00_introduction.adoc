@@ -15,6 +15,23 @@ TODO:
 * performance comparison chapter
 * resources chapter
 
+[mermaid, title="Turbo Photobook Goals"]
+....
+mindmap
+  root((Comparison<br/>goals))
+    Deployment
+      ::icon(fa fa-paper-plane)
+      Java Hotspot jar package JIT
+      GraalVM native executable AOT
+      Containerized JIT application
+      Containerized AOT application
+    Java Frameworks
+      ::icon(fa fa-mug-hot)
+      Micronaut
+      Quarkus
+      Spring Boot
+....
+
 [.text-left]
 *Copyright*
 
