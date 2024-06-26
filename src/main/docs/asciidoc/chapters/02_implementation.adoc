@@ -38,6 +38,21 @@ Each project structure is based on link:https://maven.apache.org/guides/introduc
 | README.md          | Readme
 | CHANGELOG.md       | Changelog (keep a changelog style)
 | LICENSE            | License
-| CONTRIBUTING.md    | Contribution lineguies
+| CONTRIBUTING.md    | Contribution guide lines
+
+|===
+
+
+[cols="1,1,1,1"]
+|===
+| Feature | Micronaut | Quarkus | Spring Boot
+
+| Version | 4.5.x | 3.12.x | 3.3.x
+| Java | 21 | 21 | 21
+| Virtual threads | Yes | Yes | Yes
+| Cache | Caffeine | Caffeine | ConcurrentMap
+| Native image | GraalVM | GraalVM | GraalVM
+| Containerized JIT | Yes | Yes | Yes
+| Containerized AOT | Yes | Yes | Yes
 
 |===
