@@ -35,8 +35,11 @@ do
 		echo "Waiting ${WAIT_MODE} seconcs"
 		sleep ${WAIT_MODE}
 	fi	
-	RESULT=$(bombardier -n1 -o json  ${BASE_URL}${API_URL})
-        JSON_OUTPUT={${RESULT#*\{}
-	echo ${JSON_OUTPUT} > target/iteration_${CASE}_${i}.json
+	RESULT1=$(bombardier -n1 -o json  ${BASE_URL}${API_URL})
+	JSON_OUTPUT1={${RESULT1#*\{}
+	echo ${JSON_OUTPUT1} > target/iteration_${CASE}_${i}_req1.json
+	RESULT2=$(bombardier -n1 -o json  ${BASE_URL}${API_URL})
+  JSON_OUTPUT2={${RESULT2#*\{}
+  echo ${JSON_OUTPUT2} > target/iteration_${CASE}_${i}_req2.json
 done
 
