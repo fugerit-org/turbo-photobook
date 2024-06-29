@@ -50,6 +50,7 @@ Each project structure is based on link:https://maven.apache.org/guides/introduc
 | Version | 4.5.x | 3.12.x | 3.3.x
 | Java | 21 | 21 | 21
 | Virtual threads | Yes | Yes | Yes
+| HTTP 2 | Yes | Yes | Yes
 | Cache | Caffeine | Caffeine | ConcurrentMap
 | Native image | GraalVM | GraalVM | GraalVM
 | Containerized JIT | Yes | Yes | Yes
