@@ -1,3 +1,8 @@
+#!/bin/bash
+#
+# version : 2 (2024-07-01)
+#
+# author : Matteo Franci <m@fugerit.org>
 CASE=${1}
 MODE=${2}
 
@@ -11,7 +16,10 @@ fi
 BASE_URL=${1}
 CASE=${2}
 IT_COUNT=${3}
-API_URL=/photobook-demo/api/photobook/view/list
+# uses persistence (mongodb)
+#API_URL=/photobook-demo/api/photobook/view/list
+# simple in memory data
+API_URL=/photobook-demo/api/meta/version
 WAIT_MODE=${4}
 
 echo "full url ${BASE_URL}${API_URL}"
