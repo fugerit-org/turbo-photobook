@@ -47,7 +47,7 @@ Each project structure is based on link:https://maven.apache.org/guides/introduc
 |===
 | Feature | Micronaut | Quarkus | Spring Boot
 
-| Version | 4.5.x | 3.12.x | 3.3.x
+| Version | 4.10.x | 3.31.x | 3.5.x
 | Java | 21 | 21 | 21
 | Virtual threads | Yes | Yes | Yes
 | HTTP 2 | Yes | Yes | Yes
@@ -57,3 +57,4 @@ Each project structure is based on link:https://maven.apache.org/guides/introduc
 | Containerized AOT | Yes | Yes | Yes
 
 |===
+

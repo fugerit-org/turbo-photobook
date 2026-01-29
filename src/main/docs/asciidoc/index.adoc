@@ -11,3 +11,5 @@ include::chapters/01_architecture.adoc[]
 include::chapters/02_implementation.adoc[]
 include::chapters/02_1_persistence.adoc[]
 include::chapters/02_2_aggregation.adoc[]
+
+include::chapters/03_benchmark.adoc[]
