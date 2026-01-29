@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ###
 
-- mongo db docker image reference tag 8.0.3
+- mongo db docker image reference tag 8.2.3
 
 ### Added
 
