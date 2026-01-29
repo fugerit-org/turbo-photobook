@@ -67,7 +67,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/springboot-jit-psrecord.png[SpringBoot JIT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/springboot-jit-psrecord.png[SpringBoot JIT Benchmark]
 
 [#benchmark-no-limit-sb-aot]
 === SpringBoot AOT Benchmark
@@ -116,7 +116,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/springboot-aot-psrecord.png[SpringBoot AOT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/springboot-aot-psrecord.png[SpringBoot AOT Benchmark]
 
 [#benchmark-no-limit-quarkus-jit]
 === Quarkus JIT Benchmark
@@ -167,7 +167,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/quarkus-jit-psrecord.png[SpringBoot AOT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/quarkus-jit-psrecord.png[SpringBoot AOT Benchmark]
 
 [#benchmark-no-limit-quarkus-aot]
 === Quarkus AOT Benchmark
@@ -218,7 +218,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/quarkus-aot-psrecord.png[SpringBoot AOT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/quarkus-aot-psrecord.png[SpringBoot AOT Benchmark]
 
 [#benchmark-no-limit-micronaut-jit]
 === Micronaut JIT Benchmark
@@ -269,7 +269,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/micronaut-jit-psrecord.png[SpringBoot AOT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/micronaut-jit-psrecord.png[SpringBoot AOT Benchmark]
 
 [#benchmark-no-limit-micronaut-aot]
 === Micronaut AOT Benchmark
@@ -320,7 +320,7 @@ Status code distribution:
   [200] 250000 responses
 ----
 
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/micronaut-aot-psrecord.png[SpringBoot AOT Benchmark]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/micronaut-aot-psrecord.png[SpringBoot AOT Benchmark]
 
 [#benchmark-no-limit-comparison]
 === Comparison
@@ -356,4 +356,4 @@ NOTE: this is a specific scenario and there is no resource cap.
 |===
 
 .Latency Distribution Comparison (Framework Comparison)
-image::../benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/latency-comparison.png[Latency Distribution Graph, width=800, align=center]
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-29/ubuntu-workstation-ryzen-3700x-32GB/latency-comparison.png[Latency Distribution Graph, width=800, align=center]
