@@ -13,7 +13,7 @@
 
 	<name>turbo-photobook</name>
 	<description>Documentation on a comparison among different implementation of a simple photobook application, based on Springboot, Quarkus and Micronaut (JIT and AOT versions)</description>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<licenses>
 		<license>
