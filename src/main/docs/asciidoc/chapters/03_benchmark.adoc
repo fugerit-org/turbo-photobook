@@ -1,6 +1,9 @@
 
 <<<
+[#benchmark-no-resource-limit]
 == Benchmark (no resource limit)
+
+[#benchmark-no-resource-limit-condition]
 
 This is a simple comparison benchmark between the same scenario for SpringBoot, Quarkus and Micronaut, both in JIT and AOT (GraalVM) version.
 

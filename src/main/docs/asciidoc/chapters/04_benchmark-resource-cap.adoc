@@ -1,0 +1,371 @@
+
+<<<
+== Benchmark (with resource limit)
+
+This is a simple comparison benchmark between the same scenario for SpringBoot, Quarkus and Micronaut, both in JIT and AOT (GraalVM) version.
+
+The specs of the system used for the runs are
+
+* AMD Ryzen 7 3700X 8 Core / 16 Threads
+* 32 GB Memory
+* Ubuntu 24 OS
+* NVME disk
+* MongoDB 8.2.3 running as container and already initialized
+* Docker 27.2
+
+The benchmark tool used is link:https://github.com/rakyll/hey[hey].
+
+Each run is composed of 250.000 request (two times, first for warm up, second for benchmark), with 8 connections.
+
+Resource cap has been set on docker containers :
+
+* mongo db - 2CPU, 2GB
+* JIT microservice - 1CPU, 500M
+* APT microservice - 1CPU, 200M
+
+[#benchmark-with-limit-springboot-jit]
+=== SpringBoot JIT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/springboot-photobook:v2.3.1
+* Startup time : about 4000 ms
+* CPU : 1
+* Memory : 500M
+
+[source,txt]
+----
+Summary:
+  Total:        55.3979 secs
+  Slowest:      0.0712 secs
+  Fastest:      0.0005 secs
+  Average:      0.0018 secs
+  Requests/sec: 4512.8037
+
+
+Response time histogram:
+  0.000 [1]     |
+  0.008 [245561]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.015 [15]    |
+  0.022 [0]     |
+  0.029 [8]     |
+  0.036 [8]     |
+  0.043 [28]    |
+  0.050 [1602]  |
+  0.057 [2559]  |
+  0.064 [128]   |
+  0.071 [90]    |
+
+
+Latency distribution:
+  10% in 0.0007 secs
+  25% in 0.0007 secs
+  50% in 0.0008 secs
+  75% in 0.0010 secs
+  90% in 0.0012 secs
+  95% in 0.0014 secs
+  99% in 0.0503 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0005 secs, 0.0712 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0018 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0040 secs
+  resp wait:    0.0017 secs, 0.0004 secs, 0.0712 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0540 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+[#benchmark-with-limit-springboot-aot]
+=== SpringBoot AOT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/springboot-photobook:v2.3.1-native
+* Startup time : about 25 ms
+* CPU : 1
+* Memory : 200M
+
+[source,txt]
+----
+Summary:
+  Total:        66.9154 secs
+  Slowest:      0.0217 secs
+  Fastest:      0.0006 secs
+  Average:      0.0021 secs
+  Requests/sec: 3736.0611
+
+
+Response time histogram:
+  0.001 [1]     |
+  0.003 [230885]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.005 [12483] |■■
+  0.007 [197]   |
+  0.009 [1361]  |
+  0.011 [1869]  |
+  0.013 [2189]  |
+  0.015 [750]   |
+  0.017 [163]   |
+  0.020 [61]    |
+  0.022 [41]    |
+
+
+Latency distribution:
+  10% in 0.0017 secs
+  25% in 0.0017 secs
+  50% in 0.0018 secs
+  75% in 0.0020 secs
+  90% in 0.0023 secs
+  95% in 0.0029 secs
+  99% in 0.0116 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0006 secs, 0.0217 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0015 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0018 secs
+  resp wait:    0.0021 secs, 0.0005 secs, 0.0216 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0146 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+[#benchmark-with-limit-quarkus-jit]
+=== Quarkus JIT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/quarkus-photobook:v1.1.2
+* Startup time : about 2000 ms
+* CPU : 1
+* Memory : 500M
+
+[source,txt]
+----
+Summary:
+  Total:        46.0769 secs
+  Slowest:      0.0729 secs
+  Fastest:      0.0004 secs
+  Average:      0.0015 secs
+  Requests/sec: 5425.7127
+
+  Total data:   46000000 bytes
+  Size/request: 184 bytes
+
+Response time histogram:
+  0.000 [1]     |
+  0.008 [246313]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.015 [0]     |
+  0.022 [0]     |
+  0.029 [8]     |
+  0.037 [8]     |
+  0.044 [213]   |
+  0.051 [3088]  |■
+  0.058 [113]   |
+  0.066 [29]    |
+  0.073 [227]   |
+
+
+Latency distribution:
+  10% in 0.0006 secs
+  25% in 0.0006 secs
+  50% in 0.0007 secs
+  75% in 0.0008 secs
+  90% in 0.0011 secs
+  95% in 0.0013 secs
+  99% in 0.0461 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0004 secs, 0.0729 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0005 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0007 secs
+  resp wait:    0.0014 secs, 0.0004 secs, 0.0729 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0007 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+[#benchmark-with-limit-quarkus-aot]
+=== Quarkus AOT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/quarkus-photobook:v1.1.2-native
+* Startup time : about 20 ms
+* CPU : 1
+* Memory : 200M
+
+[source,txt]
+----
+Summary:
+  Total:        61.7660 secs
+  Slowest:      0.0496 secs
+  Fastest:      0.0005 secs
+  Average:      0.0020 secs
+  Requests/sec: 4047.5363
+
+  Total data:   46000000 bytes
+  Size/request: 184 bytes
+
+Response time histogram:
+  0.001 [1]     |
+  0.005 [244902]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.010 [153]   |
+  0.015 [8]     |
+  0.020 [0]     |
+  0.025 [0]     |
+  0.030 [0]     |
+  0.035 [52]    |
+  0.040 [1589]  |
+  0.045 [3012]  |
+  0.050 [283]   |
+
+
+Latency distribution:
+  10% in 0.0009 secs
+  25% in 0.0010 secs
+  50% in 0.0011 secs
+  75% in 0.0013 secs
+  90% in 0.0016 secs
+  95% in 0.0021 secs
+  99% in 0.0408 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0005 secs, 0.0496 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0004 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0005 secs
+  resp wait:    0.0019 secs, 0.0005 secs, 0.0496 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0008 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+[#benchmark-with-limit-micronaut-jit]
+=== Micronaut JIT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/micronaut-photobook:v1.1.1
+* Startup time : about 2000 ms
+* CPU : 1
+* Memory : 500M
+
+[source,txt]
+----
+Summary:
+  Total:        40.3541 secs
+  Slowest:      0.0635 secs
+  Fastest:      0.0004 secs
+  Average:      0.0013 secs
+  Requests/sec: 6195.1607
+
+  Total data:   46000000 bytes
+  Size/request: 184 bytes
+
+Response time histogram:
+  0.000 [1]     |
+  0.007 [246764]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.013 [5]     |
+  0.019 [8]     |
+  0.026 [0]     |
+  0.032 [9]     |
+  0.038 [153]   |
+  0.045 [2503]  |
+  0.051 [501]   |
+  0.057 [40]    |
+  0.064 [16]    |
+
+
+Latency distribution:
+  10% in 0.0006 secs
+  25% in 0.0006 secs
+  50% in 0.0007 secs
+  75% in 0.0008 secs
+  90% in 0.0010 secs
+  95% in 0.0011 secs
+  99% in 0.0409 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0004 secs, 0.0635 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0005 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0007 secs
+  resp wait:    0.0013 secs, 0.0004 secs, 0.0635 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0031 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+[#benchmark-with-limit-micronaut-aot]
+=== Micronaut AOT Benchmark (container, with resource limit)
+
+* Docker image : fugeritorg/micronaut-photobook:v1.1.1-native
+* Startup time : about 15 ms
+* CPU : 1
+* Memory : 200M
+
+[source,txt]
+----
+Summary:
+  Total:        49.1055 secs
+  Slowest:      0.0460 secs
+  Fastest:      0.0005 secs
+  Average:      0.0016 secs
+  Requests/sec: 5091.0743
+
+  Total data:   46000000 bytes
+  Size/request: 184 bytes
+
+Response time histogram:
+  0.001 [1]     |
+  0.005 [245873]        |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.010 [214]   |
+  0.014 [8]     |
+  0.019 [0]     |
+  0.023 [12]    |
+  0.028 [12]    |
+  0.032 [34]    |
+  0.037 [1727]  |
+  0.041 [1937]  |
+  0.046 [182]   |
+
+
+Latency distribution:
+  10% in 0.0008 secs
+  25% in 0.0008 secs
+  50% in 0.0009 secs
+  75% in 0.0011 secs
+  90% in 0.0013 secs
+  95% in 0.0018 secs
+  99% in 0.0364 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0000 secs, 0.0005 secs, 0.0460 secs
+  DNS-lookup:   0.0000 secs, 0.0000 secs, 0.0004 secs
+  req write:    0.0000 secs, 0.0000 secs, 0.0007 secs
+  resp wait:    0.0015 secs, 0.0005 secs, 0.0460 secs
+  resp read:    0.0000 secs, 0.0000 secs, 0.0009 secs
+
+Status code distribution:
+  [200] 250000 responses
+----
+
+=== Comparison with resource limit
+
+[cols="h,1,1,1,1,1,1", options="header"]
+
+|===
+
+| Latency % | SpringBoot JIT | SpringBoot AOT | Quarkus JIT | Quarkus AOT | Micronaut JIT | Micronaut AOT
+
+| 10% | 0.0007s | 0.0017s | 0.0006s | 0.0009s | 0.0006s | 0.0008s
+
+| 25% | 0.0007s | 0.0017s | 0.0006s | 0.0010s | 0.0006s | 0.0008s
+
+| 50% | 0.0008s | 0.0018s | 0.0007s | 0.0011s | 0.0007s | 0.0009s
+
+| 75% | 0.0010s | 0.0020s | 0.0008s | 0.0013s | 0.0008s | 0.0011s
+
+| 90% | 0.0012s | 0.0023s | 0.0011s | 0.0016s | 0.0010s | 0.0013s
+
+| 95% | 0.0014s | 0.0029s | 0.0013s | 0.0021s | 0.0011s | 0.0018s
+
+| 99% | 0.0503s | 0.0116s | 0.0461s | 0.0408s | 0.0409s | 0.0364s
+
+|===
+
+.Latency Distribution Comparison (Framework Comparison)
+image::https://raw.githubusercontent.com/fugerit-org/turbo-photobook/refs/heads/main/src/main/docs/asciidoc/benchmark-data/2026-01-31/ubuntu-workstation-ryzen-3700x-32GB-container-cap/latency-comparison.png[Latency Distribution Graph, width=800, align=center]

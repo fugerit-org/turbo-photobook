@@ -13,3 +13,5 @@ include::chapters/02_1_persistence.adoc[]
 include::chapters/02_2_aggregation.adoc[]
 
 include::chapters/03_benchmark.adoc[]
+
+include::chapters/04_benchmark-resource-cap.adoc[]
